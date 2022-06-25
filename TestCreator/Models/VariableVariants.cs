@@ -4,14 +4,14 @@ namespace TestCreator.Models;
 
 public class VariableVariants
 {
-    public List<NameToResources> ProductToResources { get; }
-    public List<NameToResources> Production { get; }
-    public List<NameToResources> ExpensesVariable { get; }
+    public List<NameToResources> NameToResources { get; }
+    public List<string> Production { get; }
+    public List<string> ExpensesVariable { get; }
 
-    public VariableVariants(List<NameToResources> productToResources, List<NameToResources> production,
-        List<NameToResources> expensesVariable)
+    public VariableVariants(List<NameToResources> nameToResources, List<string> production,
+        List<string> expensesVariable)
     {
-        ProductToResources = productToResources;
+        NameToResources = nameToResources;
         Production = production;
         ExpensesVariable = expensesVariable;
     }

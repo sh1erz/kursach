@@ -2,14 +2,14 @@
   "variableVariants": {
     "nameToResources": [
       {
-        "productName": "стільці",
+        "productionName": "стільці",
         "resources": [
           "гвозди",
           "дерево"
         ]
       },
       {
-        "productName": "деталі",
+        "productionName": "деталі",
         "resources": [
           "залізо",
           "срібло",
@@ -22,7 +22,7 @@
       "F1 F2",
       "Modl03 Modl07"
     ],
-    "expensesVariable": [
+    "expenses": [
       "час",
       "гроші"
     ]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestCreator.Models;
+using TestCreator.SentenceGenerator;
 using static TestCreator.IO.FileReader;
 
 namespace TestCreator;
@@ -26,6 +27,9 @@ internal static class Program
         //     string.Format(selectedVariant,)
         //     sentence1Parts.Add(selectedVariant);
         // }
+        //todo get from json
+        var variableVariants = new VariableVariants(null, null, null);
+        var variableProvider = new VariableProvider(variableVariants);
 
         var product = "product111";
         var price = "333";
