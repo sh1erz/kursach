@@ -4,12 +4,12 @@ namespace TestCreator.Models;
 
 public class NameToResources
 {
-    public string ProductName { get; }
+    public string ProductionName { get; }
     public List<string> Resources { get; }
 
-    public NameToResources(string productName, List<string> resources)
+    public NameToResources(string productionName, List<string> resources)
     {
-        ProductName = productName;
+        ProductionName = productionName;
         Resources = resources;
     }
 }
