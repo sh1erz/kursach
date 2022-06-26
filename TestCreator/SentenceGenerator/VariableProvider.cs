@@ -7,16 +7,16 @@ namespace TestCreator.SentenceGenerator;
 public class VariableProvider
 {
     //Variables
-    private string ProductionName { get; }
-    private string Production1 { get; }
-    private string Production2 { get; }
-    private string Resource1 { get; }
-    private string Resource2 { get; }
+    public string ProductionName { get; }
+    public string Production1 { get; }
+    public string Production2 { get; }
+    public string Resource1 { get; }
+    public string Resource2 { get; }
+    public string Expenses { get; }
 
-    private bool IsPositive { get; } = new Random().Next(2) == 0;
-    private string Expenses { get; }
+    public bool IsPositive { get; } = new Random().Next(2) == 0;
 
-    public VariableProvider(VariableVariants variableVariants)
+    public VariableProvider(VariableVariants? variableVariants)
     {
         var nameToRes = ChooseAndRemove(variableVariants.NameToResources);
         ProductionName = nameToRes.ProductName;
@@ -27,7 +27,7 @@ public class VariableProvider
         Production1 = productions[0];
         Production2 = productions[1];
 
-        Expenses = ChooseAndRemove(variableVariants.ExpensesVariable);
+        Expenses = ChooseAndRemove(variableVariants.Expenses);
     }
 
     private static T ChooseAndRemove<T>(List<T> list)
@@ -36,5 +36,10 @@ public class VariableProvider
         var value = list[index];
         list.RemoveAt(index);
         return value;
+    }
+
+    public List<string> GetAsList()
+    {
+        return new List<string> { };
     }
 }
