@@ -19,7 +19,7 @@ public class VariableProvider
     public VariableProvider(VariableVariants? variableVariants)
     {
         var nameToRes = ChooseAndRemove(variableVariants.NameToResources);
-        ProductionName = nameToRes.ProductName;
+        ProductionName = nameToRes.ProductionName;
         Resource1 = ChooseAndRemove(nameToRes.Resources);
         Resource2 = ChooseAndRemove(nameToRes.Resources);
 
