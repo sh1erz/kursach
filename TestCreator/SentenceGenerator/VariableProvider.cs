@@ -7,12 +7,13 @@ namespace TestCreator.SentenceGenerator;
 public class VariableProvider
 {
     //Variables
-    public string ProductionName { get; }
-    public string Production1 { get; }
-    public string Production2 { get; }
-    public string Resource1 { get; }
-    public string Resource2 { get; }
-    public string Expenses { get; }
+    
+    public string ProductionName { get; } //0
+    public string Production1 { get; } //1
+    public string Production2 { get; } //2
+    public string Resource1 { get; } //3 
+    public string Resource2 { get; } //4
+    public string Expenses { get; } //5
 
     public bool IsPositive { get; } = new Random().Next(2) == 0;
 
