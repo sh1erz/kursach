@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TestCreator.Models;
 
-namespace TestCreator.SentenceGenerator;
+namespace TestCreator.Generators;
 
 public class VariableProvider
 {
@@ -39,8 +39,14 @@ public class VariableProvider
         return value;
     }
 
-    public List<string> GetAsList()
+    public List<string> ToList()
     {
-        return new List<string> { };
+        return new List<string>
+        {
+            ProductionName,
+            Production1, Production2,
+            Resource1, Resource2,
+            Expenses
+        };
     }
 }
