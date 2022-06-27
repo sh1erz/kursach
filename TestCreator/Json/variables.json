@@ -8,6 +8,34 @@
       ]
     },
     {
+      "productionName": "ліхтариків",
+      "resources": [
+        "скла",
+        "пластику"
+      ]
+    },
+    {
+      "productionName": "цукерок",
+      "resources": [
+        "молока",
+        "шоколаду"
+      ]
+    },
+    {
+      "productionName": "наметів",
+      "resources": [
+        "сукна",
+        "алюмінію"
+      ]
+    },
+    {
+      "productionName": "роботів",
+      "resources": [
+        "сталі",
+        "пластику"
+      ]
+    },
+    {
       "productionName": "деталей",
       "resources": [
         "заліза",
@@ -19,7 +47,12 @@
   ],
   "production": [
     "F1 F2",
-    "Modl03 Modl07"
+    "A B",
+    "IX99 3AS",
+    "POR12 NG18",
+    "Modl03 Modl07",
+    "V4T KD3",
+    "Корівка Бджілка"
   ],
   "expenses": [
     "часу",

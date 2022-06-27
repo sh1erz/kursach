@@ -163,12 +163,13 @@ public class SentenceGenerator
     public string FormatSentences(
         List<Dictionary<string, List<string>>> sentencesPartsVariants)
     {
-        var sentences = new List<string>();
-
-        sentences.Add(GenerateSentence1(sentencesPartsVariants[0]));
-        sentences.Add(GenerateSentence2(sentencesPartsVariants[1]));
-        sentences.Add(GenerateSentence3(sentencesPartsVariants[2]));
-        sentences.Add(GenerateSentence4(sentencesPartsVariants[3]));
+        var sentences = new List<string>
+        {
+            GenerateSentence1(sentencesPartsVariants[0]),
+            GenerateSentence2(sentencesPartsVariants[1]),
+            GenerateSentence3(sentencesPartsVariants[2]),
+            GenerateSentence4(sentencesPartsVariants[3])
+        };
 
         return string.Join(" ", sentences);
     }
