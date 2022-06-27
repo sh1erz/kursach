@@ -7,8 +7,12 @@ namespace TestCreator.Generators;
 
 public class SentenceGenerator
 {
+    public const int RandLowerBound = 10;
+    public const int RandUpperBound = 40;
+
     private VariableProvider _variableProvider { get; }
-    private MathModel MathModel { get; } = new MathModel();
+
+    private MathModel MathModel { get; } = new();
 
     public SentenceGenerator(VariableProvider variableProvider)
     {
@@ -34,7 +38,7 @@ public class SentenceGenerator
         var variables = _variableProvider.ToList();
         var r = new Random();
         var ks = new List<string>();
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
             var k = r.Next(RandLowerBound, RandUpperBound);
             ks.Add(k.ToString());
@@ -125,15 +129,11 @@ public class SentenceGenerator
         //min/max z = k1x1 , k2x2
         var zf = _variableProvider.IsPositive ? "max" : "min";
         if (_variableProvider.IsPositive)
-        {
             sentenceParts = sentenceParts.Where(x => !x.Key.Contains("false")).ToDictionary(pair => pair.Key,
                 pair => pair.Value);
-        }
         else
-        {
             sentenceParts = sentenceParts.Where(x => !x.Key.Contains("true")).ToDictionary(pair => pair.Key,
                 pair => pair.Value);
-        }
 
         var r = new Random();
         var k1 = r.Next(RandLowerBound, RandUpperBound);
@@ -160,7 +160,7 @@ public class SentenceGenerator
         return string.Join(" ", parts);
     }
 
-    public string GenerateSentences(
+    public string FormatSentences(
         List<Dictionary<string, List<string>>> sentencesPartsVariants)
     {
         var sentences = new List<string>();
@@ -194,12 +194,9 @@ public class SentenceGenerator
         return string.Join(" ", sentences);
     }
 
-    public string PrintMathModel()
+    public string FormatMathModel()
     {
         return
             $"{MathModel.X1},\n{MathModel.X2}\n{MathModel.Constraint1}\n{MathModel.Constraint2}\n{MathModel.TargetFunction}";
     }
-
-    public const int RandLowerBound = 10;
-    public const int RandUpperBound = 40;
 }
