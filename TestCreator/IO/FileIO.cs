@@ -19,6 +19,7 @@ public static class FileIO
     public static async Task WriteToTextFile(string output)
     {
         await using StreamWriter file = new("Problems.txt", true);
-        await file.WriteAsync(output);
+        var formattedOutput = output + "\n\n";
+        await file.WriteAsync(formattedOutput);
     }
 }

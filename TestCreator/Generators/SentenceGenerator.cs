@@ -27,7 +27,7 @@ public class SentenceGenerator
         MathModel.X2 =
             $"х2 - кількість {_variableProvider.ProductionName} типу {_variableProvider.Production2}";
 
-        return constructSentense(sentenceParts, _variableProvider.ToList());
+        return ConstructSentence(sentenceParts, _variableProvider.ToList());
     }
 
     //**Generates coefficients for constraints
@@ -47,7 +47,7 @@ public class SentenceGenerator
 
         MathModel.Constraint1 = string.Format("{0}x1 + {1}x2 ", ks.ToArray());
         MathModel.Constraint2 = string.Format("{2}x1 + {3}x2 ", ks.ToArray());
-        return constructSentense(sentenceParts, variables);
+        return ConstructSentence(sentenceParts, variables);
     }
 
     //**Generates sign and value for constraints**//
@@ -120,7 +120,7 @@ public class SentenceGenerator
         MathModel.Constraint1 += res1;
         MathModel.Constraint2 += res2;
 
-        return constructSentense(sentenceParts, variables);
+        return ConstructSentence(sentenceParts, variables);
     }
 
     //**Generates target function**//
@@ -142,10 +142,10 @@ public class SentenceGenerator
         variables.Add(k1.ToString());
         variables.Add(k2.ToString());
         MathModel.TargetFunction = $"{zf} z= {k1}x1 + {k2}x2";
-        return constructSentense(sentenceParts, variables);
+        return ConstructSentence(sentenceParts, variables);
     }
 
-    private string constructSentense(Dictionary<string, List<string>> sentencePartsDictionary, List<string> variables)
+    private string ConstructSentence(Dictionary<string, List<string>> sentencePartsDictionary, List<string> variables)
     {
         var parts = new List<string>();
         foreach (var part in sentencePartsDictionary)
@@ -169,27 +169,6 @@ public class SentenceGenerator
         sentences.Add(GenerateSentence2(sentencesPartsVariants[1]));
         sentences.Add(GenerateSentence3(sentencesPartsVariants[2]));
         sentences.Add(GenerateSentence4(sentencesPartsVariants[3]));
-
-        /*foreach (var sentencePartsVariants in sentencesPartsVariants)
-        {
-            // for one sentence
-            var sentenceParts = new List<string>();
-            foreach (var part in sentencePartsVariants)
-            {
-                var values = part.Value;
-                var randInt = r.Next(values.Count);
-                var variables = _variableProvider
-                    .ToList();
-                variables.Add(r.Next(RandLowerBound, RandUpperBound).ToString());
-                var selectedVariant = values[randInt];
-                selectedVariant = string.Format(
-                    selectedVariant,
-                    variables.ToArray());
-                sentenceParts.Add(selectedVariant);
-            }
-
-            sentences.Add(string.Join(" ", sentenceParts));
-        }*/
 
         return string.Join(" ", sentences);
     }
