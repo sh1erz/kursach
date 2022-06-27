@@ -13,20 +13,11 @@ public static class FileReader
         return await File.ReadAllLinesAsync("Json/" + filename);
     }
 
-    public static async Task<Dictionary<string, List<string>>?> ReadVariantsFromJsonFile(string filename)
+    public static async Task<T> ReadFromJsonFile<T>(string filename)
     {
         using var r = new StreamReader("Json/" + filename);
         var json = await r.ReadToEndAsync();
-        var variants = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json,
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        return variants;
-    }
-
-    public static async Task<VariableVariants?> ReadVariablesFromJsonFile(string filename)
-    {
-        using var r = new StreamReader("Json/" + filename);
-        var json = await r.ReadToEndAsync();
-        var variants = JsonSerializer.Deserialize<VariableVariants>(json,
+        var variants = JsonSerializer.Deserialize<T>(json,
             new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         return variants;
     }
