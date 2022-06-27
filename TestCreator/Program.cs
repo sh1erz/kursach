@@ -11,7 +11,6 @@ internal static class Program
     public static async Task Main(string[] args)
     {
         var variableVariants = await ReadVariablesFromJsonFile("variables.json");
-        var variableProvider = new VariableProvider(variableVariants);
 
         var sentenceVariants = new List<Dictionary<string, List<string>>>();
         for (int i = 0; i < Sentences; i++)
@@ -20,8 +19,11 @@ internal static class Program
             sentenceVariants.Add(sentenceVariantsDict);
         }
 
-        var task = SentenceGenerator.GenerateSentences();
-        Console.WriteLine(task);
+        var variableProvider = new VariableProvider(variableVariants);
+        var generator = new SentenceGenerator(variableProvider);
+
+        Console.WriteLine(generator.GenerateSentences(sentenceVariants));
+        Console.WriteLine(generator.PrintMathModel());
     }
 
     public const int Sentences = 4;
