@@ -10,24 +10,27 @@ internal static class Program
 {
     private const int Sentences = 4;
 
-    public static async Task Main(string[] args)
+    public static async Task Main()
     {
-        var variableVariants = await FileIO.ReadFromJsonFile<VariableVariants>("variables.json");
-        var variableProvider = new VariableProvider(variableVariants);
-
-        var sentenceVariants = new List<Dictionary<string, List<string>>>();
-        for (var i = 0; i < Sentences; i++)
+        for (int z = 0; z < 100; z++)
         {
-            var sentenceVariantsDict =
-                await FileIO.ReadFromJsonFile<Dictionary<string, List<string>>>($"sentence{i + 1}.json");
-            sentenceVariants.Add(sentenceVariantsDict);
+            var variableVariants = await FileIO.ReadFromJsonFile<VariableVariants>("variables.json");
+            var variableProvider = new VariableProvider(variableVariants);
+
+            var sentenceVariants = new List<Dictionary<string, List<string>>>();
+            for (var i = 0; i < Sentences; i++)
+            {
+                var sentenceVariantsDict =
+                    await FileIO.ReadFromJsonFile<Dictionary<string, List<string>>>($"sentence{i + 1}.json");
+                sentenceVariants.Add(sentenceVariantsDict);
+            }
+
+            var generator = new SentenceGenerator(variableProvider);
+            var problemDescription = generator.FormatSentences(sentenceVariants);
+            var mathModel = generator.FormatMathModel();
+
+            await FileIO.WriteToTextFile(problemDescription);
+            await FileIO.WriteToTextFile(mathModel);
         }
-
-        var generator = new SentenceGenerator(variableProvider);
-        var problemDescription = generator.FormatSentences(sentenceVariants);
-        var mathModel = generator.FormatMathModel();
-
-        await FileIO.WriteToTextFile(problemDescription);
-        await FileIO.WriteToTextFile(mathModel);
     }
 }
